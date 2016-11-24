@@ -1,149 +1,72 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-
-<!-- Head tag -->
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
-  <!--Description-->
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>lizimeow&#39;s blog</title>
+  <subtitle>随手记录</subtitle>
+  <link href="/atom.xml" rel="self"/>
   
-
-  <!--Author-->
+  <link href="http://yoursite.com/"/>
+  <updated>2016-11-24T02:27:49.223Z</updated>
+  <id>http://yoursite.com/</id>
   
-  <meta name="author" content="lizimeow">
+  <author>
+    <name>lizimeow</name>
+    
+  </author>
   
-
-  <!--Open Graph Title-->
+  <generator uri="http://hexo.io/">Hexo</generator>
   
-      <meta property="og:title" content="微信小程序的小练手"/>
+  <entry>
+    <title>解决Ruby gem被墙的问题</title>
+    <link href="http://yoursite.com/2016/11/24/2016-11-24-%E8%A7%A3%E5%86%B3Ruby%20gem%E8%A2%AB%E5%A2%99%E7%9A%84%E9%97%AE%E9%A2%98/"/>
+    <id>http://yoursite.com/2016/11/24/2016-11-24-解决Ruby gem被墙的问题/</id>
+    <published>2016-11-24T02:26:49.000Z</published>
+    <updated>2016-11-24T02:27:49.223Z</updated>
+    
+    <content type="html"><![CDATA[<p>gem  install 的时候…..</p>
+<p><code>C:\Windows\System32&gt;gem install jekyll ERROR:  Could not find a valid gem &#39;jekyll&#39; (&gt;= 0), here is why:           Unable to download data from https://rubygems.org/ - SSL_connect retur ned=1 errno=0 state=SSLv3 read server certificate B: certificate verif</code></p>
+<p>被墙了…</p>
+<p>所以只能翻墙或者换源…</p>
+<p>之前用SocksCap翻得好好的…今天突然不行了<em>(:зゝ∠)</em>…</p>
+<p>所以还是换个源…</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$ gem sources --remove https://rubygems.org/</div><div class="line">$ gem sources -a https://ruby.taobao.org/</div><div class="line">$ gem sources -l</div><div class="line">*** CURRENT SOURCES ***</div><div class="line"></div><div class="line">https://ruby.taobao.org</div></pre></td></tr></table></figure>
+<p>换taobao源的时候报了这个错..- - </p>
+<p><code>Error fetching https://ruby.taobao.org/: SSL_connect returned=1 errno=0 stat</code></p>
+<p>大概有两种解决方法</p>
+<h3 id="第一种方法"><a href="#第一种方法" class="headerlink" title="第一种方法"></a>第一种方法</h3><ul>
+<li><p>1、下载<a href="http://pan.baidu.com/s/1sl8fk1f" target="_blank" rel="external">http://pan.baidu.com/s/1sl8fk1f</a> 复制到ruby安装的根目录</p>
+</li>
+<li><p>2、添加系统环境变量：</p>
+<p>SSL_CERT_FILE=ruby的根目录加\cacert.pem（类似c:\Ruby22-x64\cacert.pem）</p>
+</li>
+<li><p>3、关闭命令行，重新打开，重新键入</p>
+<p><code>gem sources -a https://ruby.taobao.org/</code></p>
+</li>
+</ul>
+<h3 id="第二种方法"><a href="#第二种方法" class="headerlink" title="第二种方法"></a>第二种方法</h3><ul>
+<li>使用 <a href="http://gems.ruby-china.org/" target="_blank" rel="external">http://gems.ruby-china.org/</a> 做为源</li>
+</ul>
+<p>（第二种没试..第一种亲测可行…</p>
+<p><del>fu*k gfw</del>  </p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;gem  install 的时候…..&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;C:\Windows\System32&amp;gt;gem install jekyll ERROR:  Could not find a valid gem &amp;#39;jekyll&amp;#39; (&amp;gt;= 0),
+    
+    </summary>
+    
+    
+  </entry>
   
-  <!--Open Graph Description-->
-  
-  <!--Open Graph Site Name-->
-  <meta property="og:site_name" content="lizimeow&#39;s blog"/>
-  <!--Type page-->
-  
-      <meta property="og:type" content="article" />
-  
-  <!--Page Cover-->
-  
-
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-  <!-- Title -->
-  
-  <title>微信小程序的小练手 - lizimeow&#39;s blog</title>
-
-
-  <link rel="shortcut icon" href="https://hexo.io/icon/favicon-96x96.png">
-
-  <!-- Custom CSS/Sass -->
-  <link rel="stylesheet" href="/css/style.css">
-
-  <!----------------------------
-  https://github.com/GallenHu/hexo-theme-Daily
-
- _____            _   _
-|  __ \          (_) | |
-| |  | |   __ _   _  | |  _   _
-| |  | |  / _` | | | | | | | | |
-| |__| | | (_| | | | | | | |_| |
-|_____/   \__,_| |_| |_|  \__, |
-                          __/ |
-                         |___/
-
-    --------------------------->
-
-</head>
-
-
-<body>
-
-  <!-- Nav -->
-  <header class="site-header">
-  <div class="header-inside">
-    <div class="logo">
-      <a href="/" rel="home">
-        
-        <img src="https://hexo.io/logo.svg" alt="lizimeow's blog" height="60">
-        
-      </a>
-    </div>
-    <!-- Navigation -->
-    <nav class="navbar">
-      <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class="collapse">
-        <ul class="navbar-nav">
-          
-          
-            <li>
-              <a href="/.">
-                
-                  Home
-                
-              </a>
-            </li>
-          
-            <li>
-              <a href="/archives">
-                
-                  Archive
-                
-              </a>
-            </li>
-          
-            <li>
-              <a href="/about">
-                
-                  About
-                
-              </a>
-            </li>
-          
-        </ul>
-      </div>
-      <!-- /.navbar-collapse -->
-    </nav>
-    <div class="button-wrap">
-      <button class="menu-toggle">Primary Menu</button>
-    </div>
-  </div>
-</header>
-
-
-  <!-- Main Content -->
-  <div class="content-area">
-  <div class="post">
-    <!-- Post Content -->
-    <div class="container">
-      <article>
-        <!-- Title date & tags -->
-        <div class="post-header">
-          <h1 class="entry-title">
-            微信小程序的小练手
-            
-          </h1>
-          <p class="posted-on">
-          2016-11-23
-          </p>
-          <div class="tags-links">
-            
-              
-                <a href="/tags/14级/" rel="tag">
-                  14级
-                </a>
-              
-                <a href="/tags/Web/" rel="tag">
-                  Web
-                </a>
-              
-            
-          </div>
-        </div>
-        <!-- Post Main Content -->
-        <div class="entry-content">
-          <blockquote>
+  <entry>
+    <title>微信小程序的小练手</title>
+    <link href="http://yoursite.com/2016/11/23/2016-11-23-wechat-demo/"/>
+    <id>http://yoursite.com/2016/11/23/2016-11-23-wechat-demo/</id>
+    <published>2016-11-23T11:22:31.000Z</published>
+    <updated>2016-11-24T02:16:55.109Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
 <p>喵~</p>
 </blockquote>
 <p>微信小程序是一种不需要下载安装即可使用的应用，它实现了应用“触手可及”的梦想，用户扫一扫或搜一下即可打开应用。用完即走，适合场景化的问题。</p>
@@ -175,94 +98,78 @@
 <p>在wxml的代码里，需要对<code>scroll-view</code>给定一个固定的height，不然他不会有加载的效果，为了适配不同的分辨率，通过<code>wx.getSystemInfo</code>获取用户的窗口高度进行数据绑定。（WXML 中的动态数据均来自对应 Page 的 data）</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">view</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">scroll-view</span> <span class="attr">scroll-y</span>=<span class="string">"true"</span> <span class="attr">style</span>=<span class="string">"height:&#123;&#123;windowH&#125;&#125;px"</span> <span class="attr">class</span>=<span class="string">"list"</span> <span class="attr">bindscrolltolower</span>=<span class="string">"handleLoadMore"</span> &gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">view</span> <span class="attr">class</span>=<span class="string">"wrap"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">view</span> <span class="attr">class</span>=<span class="string">"activity-box"</span>  <span class="attr">wx:for</span>=<span class="string">"&#123;&#123;items&#125;&#125;"</span> <span class="attr">wx:key</span>=<span class="string">"_id"</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">image</span> <span class="attr">src</span>=<span class="string">"&#123;&#123; item.img &#125;&#125;"</span> <span class="attr">class</span>=<span class="string">"img &#123;&#123; item.statu !== 1 ? 'mask' : '' &#125;&#125; &#123;&#123; item.statu === 0 ? 'coming' : '' &#125;&#125; &#123;&#123; item.statu === 2 ? 'end' : '' &#125;&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">image</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">text</span> <span class="attr">class</span>=<span class="string">"block"</span>&gt;</span>&#123;&#123; item.title &#125;&#125;<span class="tag">&lt;/<span class="name">text</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">text</span> <span class="attr">class</span>=<span class="string">"block time"</span>&gt;</span>&#123;&#123; item.time &#125;&#125;<span class="tag">&lt;/<span class="name">text</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">view</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">view</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">view</span> <span class="attr">class</span>=<span class="string">"tips"</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">view</span> <span class="attr">wx:if</span>=<span class="string">"&#123;&#123; hasMore &#125;&#125;"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">image</span> <span class="attr">src</span>=<span class="string">"../../image/loading.gif"</span> <span class="attr">mode</span>=<span class="string">"aspectFill"</span>/&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">text</span>&gt;</span>努力加载中_(:зゝ∠)_<span class="tag">&lt;/<span class="name">text</span>&gt;</span></div><div class="line">      <span class="tag">&lt;/<span class="name">view</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">view</span> <span class="attr">wx:else</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">text</span>&gt;</span>没有更多内容了<span class="tag">&lt;/<span class="name">text</span>&gt;</span></div><div class="line">      <span class="tag">&lt;/<span class="name">view</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">view</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">scroll-view</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">view</span>&gt;</span></div></pre></td></tr></table></figure>
 <p>总而言之，跟vue有一点点像。。&amp;<del>朋神一直在吐槽小程序的api很蠢</del>。。。<em>(:зゝ∠)</em>….</p>
-
-        </div>
-      </article>
-    </div>
-    <!-- Comments -->
-    <div class="container">
-      
-    </div>
-    <!-- Pre or Next -->
-    <div class="nav-links">
-      
-        <div class="nav-previous">
-          <a href="/2016/11/24/2016-11-24-解决Ruby gem被墙的问题/" rel="prev"><span class="meta-arraw meta-arraw-left"></span> 上一页</a>
-        </div>
-      
-      
-        <div class="nav-next">
-          <a href="/2015/11/16/2015-11-16-react-native android 在windows下的初体验/" rel="prev">下一页 <span class="meta-arraw meta-arraw-right"></span></a>
-        </div>
-      
-    </div>
-
-  </div>
-</div>
-
-
-  <!-- Footer -->
-  <!-- Footer-widgets -->
-<div class="footer-widgets">
-  <div class="row inside-wrapper">
-    <div class="col-1-3">
-      <aside>
-        <h1 class="widget-title">关于本站</h1>
-        <div class="custom-widget-content">
-          
-          <p>关于自己学习和生活的一些记录~_(:зゝ∠)_~~</p>
-        </div>
-      </aside>
-    </div>
-    <div class="col-1-3">
-      <aside>
-        <h1 class="widget-title">与我联系</h1>
-        <div class="widget-text">
-          
-            
-              <a href="https://github.com/lizimeowww" class="icon icon-github" target="_blank">github</a>
-            
-              <a href="http://weibo.com/lizimeow" class="icon icon-weibo" target="_blank">weibo</a>
-            
-              <a href="https://twitter.com/lizi_yy" class="icon icon-twitter" target="_blank">twitter</a>
-            
-          
-        </div>
-      </aside>
-    </div>
-    <div class="col-1-3">
-      <aside>
-        <h1 class="widget-title">站内搜索</h1>
-        <div class="widget-text">
-          <form onSubmit="return appDaily.submitSearch('')">
-            <p>
-              <input type="text" placeholder="search..." id="homeSearchInput">
-            </p>
-            <!-- <input type="submit" value="GO"> -->
-          </form>
-        </div>
-      </aside>
-    </div>
-  </div>
-</div>
-<!-- Footer -->
-<footer class="site-info">
-  <p>
-    <span>lizimeow's blog &copy; 2016</span>
+]]></content>
     
-      <span class="split">|</span><span>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> with Theme <a href="https://github.com/GallenHu/hexo-theme-Daily" target="_blank">Daily</a></span>
+    <summary type="html">
     
-  </p>
-</footer>
-
-
-  <!-- After footer scripts -->
-  <!-- scripts -->
-<script src="//cdn.bootcss.com/zepto/1.2.0/zepto.min.js"></script>
-<script src="/js/app.js"></script>
-
-
-
-</body>
-
-</html>
+      &lt;blockquote&gt;
+&lt;p&gt;喵~&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;微信小程序是一种不需要下载安装即可使用的应用，它实现了应用“触手可及”的梦想，用户扫一扫或搜一下即可打开应用。用完即走，适合场景化的问题。&lt;/p&gt;
+&lt;p&gt;微信推了小程序之后大家对它的关注度一直很高。所
+    
+    </summary>
+    
+    
+      <category term="14级" scheme="http://yoursite.com/tags/14%E7%BA%A7/"/>
+    
+      <category term="Web" scheme="http://yoursite.com/tags/Web/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>react-native android 在windows下的初体验</title>
+    <link href="http://yoursite.com/2015/11/16/2015-11-16-react-native%20android%20%E5%9C%A8windows%E4%B8%8B%E7%9A%84%E5%88%9D%E4%BD%93%E9%AA%8C/"/>
+    <id>http://yoursite.com/2015/11/16/2015-11-16-react-native android 在windows下的初体验/</id>
+    <published>2015-11-16T03:30:00.000Z</published>
+    <updated>2016-11-24T02:23:44.048Z</updated>
+    
+    <content type="html"><![CDATA[<p>#react-native android 在windows下的初体验#</p>
+<h2 id="需要的环境："><a href="#需要的环境：" class="headerlink" title="需要的环境："></a>需要的环境：</h2><ul>
+<li>node 4.0以上 （我用的是node5.0）</li>
+<li>JDK</li>
+<li>android SDK</li>
+</ul>
+<h3 id="安装node"><a href="#安装node" class="headerlink" title="安装node"></a>安装node</h3><p><a href="https://nodejs.org/en/" target="_blank" rel="external">https://nodejs.org/en/</a></p>
+<h3 id="安装JDK"><a href="#安装JDK" class="headerlink" title="安装JDK"></a>安装JDK</h3><p>从<a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html" target="_blank" rel="external">Java官网</a>选下载最新的JDK并安装</p>
+<p>配好环境变量（这里就不赘述了）</p>
+<p>配置完毕后，通过cmd运行以下命令：<code>java -version</code>，<code>javac</code> 如果出现返回信息，则设置成功。</p>
+<h3 id="下载android-SDK"><a href="#下载android-SDK" class="headerlink" title="下载android SDK"></a>下载android SDK</h3><p>下载地址：<a href="http://developer.android.com/sdk/index.html" target="_blank" rel="external">http://developer.android.com/sdk/index.html</a></p>
+<p>Andorid SDK为Android管理开发包工具，提供了Android各级平台的开发包和工具。注意，因为我们是独立安装，不是一体化(集成系列工具)所以需要单独下载SDK。</p>
+<p>运行安装文件，并把安装目录下tools文件夹路径设置进PATH环境变量。</p>
+<p>到安装目录运行SDK Manager.exe 。<br>把android 4.0以上的包和extra都装了。<br>（可能需要翻一下墙）</p>
+<h3 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h3><p><code>npm install -g react-native-cli</code></p>
+<p><code>react-native init AwesomeProject</code></p>
+<p><code>cd AwesomeProject/</code></p>
+<h3 id="运行项目"><a href="#运行项目" class="headerlink" title="运行项目"></a>运行项目</h3><p><code>react-native start</code> </p>
+<p>运行成功后，打开另一个命令行窗口，</p>
+<p><code>cd AwesomeProject</code></p>
+<p>连接好安卓模拟器或者真机（要android5.0以上，不然运行之后会出现Error Type 3）</p>
+<p>因为我的安卓模拟器（AVD）超级卡，原先是勾选了Use Host GPU，模拟器启动会加快，但是后来不知道为什么模拟器启动后会自动黑屏。取消勾选Use Host GPU之后模拟器又启动不了，于是我就把自己的小米2s刷成了android 5.0 <em>(:зゝ∠)</em>。</p>
+<p>然后</p>
+<p><code>adb devices</code></p>
+<p>查看自己是否连接上安卓设备，确定连接上后</p>
+<p><code>react-native run-android</code></p>
+<p>这个时候记得打开你的VPN。。</p>
+<p>如果出现了unable to download js bundle，也就是不能reload js，可以尝试<br><code>adb reverse tcp:8081 tcp:8081</code></p>
+<p>如果还是不行的话，你可以尝试这篇文章的方法<br><a href="http://www.cnblogs.com/unofficial/p/4843734.html" target="_blank" rel="external">http://www.cnblogs.com/unofficial/p/4843734.html</a></p>
+<p>最后的最后，终与可以在手机上看到这个应用啦。</p>
+<p>然后你就可以在选定的文本编辑器中打开 index.android.js 并且编辑代码。</p>
+<p>摇晃手机或者按菜单键，可以看到reload JS。点击，即可看到修改之后的样子。</p>
+<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><p>QAQ自带bug体质，几乎每一个坑都踩到了。GFW真是太烦了，下载东西超慢。QAQ。然后在sdk manager下载东西的时候出现了下载了好久最后没有下载下来的情况，<br>好在舍友在玩安卓，从他那儿复制了extra的整个包才得以继续。还有一个坑就是在手机上安装完之后出现了红色的页面，就是不能reload js，谷歌百度之后尝试了各种方法，最后才跑了起来。<br>QAQ痛心疾首，感觉下一台电脑必须是mac了。<br>_(:зゝ∠)</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;#react-native android 在windows下的初体验#&lt;/p&gt;
+&lt;h2 id=&quot;需要的环境：&quot;&gt;&lt;a href=&quot;#需要的环境：&quot; class=&quot;headerlink&quot; title=&quot;需要的环境：&quot;&gt;&lt;/a&gt;需要的环境：&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;node
+    
+    </summary>
+    
+      <category term="jekyll update" scheme="http://yoursite.com/categories/jekyll-update/"/>
+    
+    
+  </entry>
+  
+</feed>
