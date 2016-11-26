@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-11-24T02:27:49.223Z</updated>
+  <updated>2016-11-26T07:56:33.434Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,11 +16,102 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Hexo＋GitHub pages＋多说搭建博客</title>
+    <link href="http://yoursite.com/2016/11/26/hexo+GitHub%20pages+%E5%A4%9A%E8%AF%B4%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/"/>
+    <id>http://yoursite.com/2016/11/26/hexo+GitHub pages+多说搭建博客/</id>
+    <published>2016-11-26T04:46:25.000Z</published>
+    <updated>2016-11-26T07:56:33.434Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="我的搭建环境"><a href="#我的搭建环境" class="headerlink" title="我的搭建环境"></a>我的搭建环境</h3><blockquote>
+<p>OS: Windows_NT 6.3.9600 win32 x64</p>
+<p>hexo-cli: 1.0.2</p>
+<p>hexo：3.2.2</p>
+<p>hexo theme：material</p>
+<p>git：2.9.0.windows.1</p>
+</blockquote>
+<h2 id="Step-1-安装-Node-js"><a href="#Step-1-安装-Node-js" class="headerlink" title="Step 1 安装 Node.js"></a>Step 1 安装 Node.js</h2><p><a href="https://nodejs.org/en/" target="_blank" rel="external">nodejs官网</a></p>
+<h2 id="Step-2-安装Hexo"><a href="#Step-2-安装Hexo" class="headerlink" title="Step 2 安装Hexo"></a>Step 2 安装Hexo</h2><p><code>npm install -g hexo</code></p>
+<h2 id="Step-3-搭建本地博客"><a href="#Step-3-搭建本地博客" class="headerlink" title="Step 3 搭建本地博客"></a>Step 3 搭建本地博客</h2><ul>
+<li><p><strong>新建一个目录,如blog</strong></p>
+</li>
+<li><p><strong>在该目录下执行</strong><br><code>hexo init</code><br><code>npm install</code><br>此时默认主题默认配置的博客就搭建完成了</p>
+</li>
+<li><p><strong>安装关于启动服务器的插件</strong><br><code>npm install hexo-server --save</code></p>
+</li>
+<li><p><strong>启动服务器 默认4000端口</strong><br><code>hexo s</code></p>
+</li>
+<li><p>5.打开<a href="localhost:4000" target="_blank" rel="external">localhost:4000</a></p>
+</li>
+</ul>
+<h2 id="Step-4-主题和配置"><a href="#Step-4-主题和配置" class="headerlink" title="Step 4 主题和配置"></a>Step 4 主题和配置</h2><p>在 <a href="https://hexo.io/themes/" target="_blank" rel="external">https://hexo.io/themes/</a>选择某个喜欢的主题，以<a href="https://github.com/viosey/hexo-theme-material" target="_blank" rel="external">Material</a>为例，假设当前目录为 “blog”。</p>
+<p>前往material主题发布页面下载主题的压缩包</p>
+<p>解压并将目录更名为<strong>material</strong></p>
+<p> 将<strong>material</strong>目录 移动至 <strong>blog/themes/</strong> 目录下</p>
+<p>将 blog 目录下的 <strong>_config.yml</strong> 文件中的 <strong>theme</strong> 属性值改为 <strong>material</strong></p>
+<p>此时主题更换成功，可启动 server 验证效果</p>
+<p>对于<strong>_config.yml</strong> 中的其他属性可根据情况自行修改</p>
+<h2 id="Step-5-将博客部署到Github"><a href="#Step-5-将博客部署到Github" class="headerlink" title="Step 5 将博客部署到Github"></a>Step 5 将博客部署到Github</h2><ul>
+<li><p><strong>新建仓库名为 <code>github用户名.github.io</code></strong><br>比如我的就是 <a href="lizimeowww.github.io">lizimeowww.github.io</a><br>然后就可以访问了</p>
+</li>
+<li><p><strong>安装 hexo 关于git 的组件</strong><br><code>npm install hexo-deployer-git --save</code></p>
+</li>
+<li><p><strong>在_config.yml 中为 git 添加配置</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line">    type: git</div><div class="line">    repository: 你的仓库地址(git@github.com/用户名/用户名.github.io.git)</div><div class="line">    branch: master</div></pre></td></tr></table></figure>
+</li>
+<li><p><strong>执行</strong><br>  &lt;每次修改都要执行这些命令才能在github pages看到效果&gt;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">hexo generate</div><div class="line">hexo deploy</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>部署完成之后访问你的如 <code>lizimeowww.github.io</code> 的网址,即可看到和本地一样的效果。</p>
+<h2 id="Step-6-删写博客"><a href="#Step-6-删写博客" class="headerlink" title="Step 6 删写博客"></a>Step 6 删写博客</h2><ul>
+<li><p><strong>新建博客</strong><br><code>hexo new &quot;文章名&quot;</code><br>或者直接写一个.md文件丢进<code>source/_post</code>这个目录下就可以<br>记得要加上Front-matter </p>
+<img src="/2016/11/26/hexo+GitHub%20pages+多说搭建博客/1.png" alt="image" title="image">
+</li>
+<li><p><strong>删除文章</strong><br>直接删掉 source/_post 下对应文章的文件，然后重新生成+部署即可。有时可能要多刷新几次才能看到效果。</p>
+</li>
+</ul>
+<h2 id="Step-7-评论系统"><a href="#Step-7-评论系统" class="headerlink" title="Step 7 评论系统"></a>Step 7 评论系统</h2><ul>
+<li><p>登录 <a href="http://duoshuo.com/" target="_blank" rel="external">http://duoshuo.com/</a>点击<strong>我要安装</strong>，设置自己的网站信息，获得以下通用代码</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- 多说评论框 start --&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"ds-thread"</span> <span class="attr">data-thread-key</span>=<span class="string">"请将此处替换成文章在你的站点中的ID"</span> <span class="attr">data-title</span>=<span class="string">"请替换成文章的标题"</span> <span class="attr">data-url</span>=<span class="string">"请替换成文章的网址"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="comment">&lt;!-- 多说评论框 end --&gt;</span></div><div class="line"><span class="comment">&lt;!-- 多说公共JS代码 start (一个网页只需插入一次) --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></div><div class="line">var duoshuoQuery = &#123;short_name:"lizimeowww"&#125;;</div><div class="line">	(function() &#123;</div><div class="line">		var ds = document.createElement('script');</div><div class="line">		ds.type = 'text/javascript';ds.async = true;</div><div class="line">		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';</div><div class="line">		ds.charset = 'UTF-8';</div><div class="line">		(document.getElementsByTagName('head')[0] </div><div class="line">		 || document.getElementsByTagName('body')[0]).appendChild(ds);</div><div class="line">	&#125;)();</div><div class="line">	<span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="comment">&lt;!-- 多说公共JS代码 end --&gt;</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>在<code>_config.yml</code>中添加多说的配置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">duoshuo: </div><div class="line">  #on: true</div><div class="line">  domain: http://lizimeowww.duoshuo.com</div><div class="line">  # 是否开启多说评论，http://duoshuo.com/create-site/</div><div class="line">  # 使用上面网址登陆你的多说，然后创建站点，在 domain 中填入你设定的域名</div><div class="line">  # http://你的多说域名.duoshuo.com</div></pre></td></tr></table></figure>
+</li>
+<li><p>打开<code>themes\landscape\layout\_partial\comment.ejs</code>，全选，替换为</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;% if (page.comments)&#123; %&gt;  </div><div class="line">&lt;section id=&quot;comment&quot;&gt;  </div><div class="line">  这里要放置多说提供的通用代码  </div><div class="line">&lt;/section&gt;  </div><div class="line">&lt;% &#125; %&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>修改模板</p>
+<p>将data-thread-key=”请将此处替换成文章在你的站点中的ID” 替换成data-thread-key=”&lt;%= page.path %&gt;”<br>将data-title=”请替换成文章的标题” 替换成 data-title=”&lt;%= page.title %&gt;”<br>将data-url=”请替换成文章的网址” 替换成 data-url=”&lt;%= page.permalink %&gt;”</p>
+<p>​</p>
+</li>
+</ul>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>看教程不如看官方文档！</p>
+<p><a href="https://hexo.io/zh-cn/docs/" target="_blank" rel="external">Hexo的官方文档</a></p>
+<p><a href="https://material.vss.im/start/" target="_blank" rel="external">material主题的官方文档</a></p>
+<p><del>多说好丑</del></p>
+<p>原本接了Travis CI 自动部署 不知道哪里搞错…博客就被我玩坏了😂</p>
+<p> 等我考完试再把多说改成Disqus..&amp;重新弄一下自动部署好了…..</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;我的搭建环境&quot;&gt;&lt;a href=&quot;#我的搭建环境&quot; class=&quot;headerlink&quot; title=&quot;我的搭建环境&quot;&gt;&lt;/a&gt;我的搭建环境&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;OS: Windows_NT 6.3.9600 win32 x64&lt;/p&gt;
+&lt;p&gt;
+    
+    </summary>
+    
+    
+      <category term="教程" scheme="http://yoursite.com/tags/%E6%95%99%E7%A8%8B/"/>
+    
+  </entry>
+  
+  <entry>
     <title>解决Ruby gem被墙的问题</title>
     <link href="http://yoursite.com/2016/11/24/2016-11-24-%E8%A7%A3%E5%86%B3Ruby%20gem%E8%A2%AB%E5%A2%99%E7%9A%84%E9%97%AE%E9%A2%98/"/>
     <id>http://yoursite.com/2016/11/24/2016-11-24-解决Ruby gem被墙的问题/</id>
     <published>2016-11-24T02:26:49.000Z</published>
-    <updated>2016-11-24T02:27:49.223Z</updated>
+    <updated>2016-11-26T07:39:06.154Z</updated>
     
     <content type="html"><![CDATA[<p>gem  install 的时候…..</p>
 <p><code>C:\Windows\System32&gt;gem install jekyll ERROR:  Could not find a valid gem &#39;jekyll&#39; (&gt;= 0), here is why:           Unable to download data from https://rubygems.org/ - SSL_connect retur ned=1 errno=0 state=SSLv3 read server certificate B: certificate verif</code></p>
@@ -57,6 +148,8 @@
     </summary>
     
     
+      <category term="杂" scheme="http://yoursite.com/tags/%E6%9D%82/"/>
+    
   </entry>
   
   <entry>
@@ -64,7 +157,7 @@
     <link href="http://yoursite.com/2016/11/23/2016-11-23-wechat-demo/"/>
     <id>http://yoursite.com/2016/11/23/2016-11-23-wechat-demo/</id>
     <published>2016-11-23T11:22:31.000Z</published>
-    <updated>2016-11-24T14:26:29.773Z</updated>
+    <updated>2016-11-26T07:38:32.815Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>喵~</p>
@@ -173,7 +266,7 @@
     <link href="http://yoursite.com/2015/09/22/2015-09-22-%E5%85%B3%E4%BA%8Eimpress.js%E7%9A%84%E5%AD%A6%E4%B9%A0%E5%B0%8F%E7%BB%93/"/>
     <id>http://yoursite.com/2015/09/22/2015-09-22-关于impress.js的学习小结/</id>
     <published>2015-09-21T16:40:03.000Z</published>
-    <updated>2016-11-24T14:28:59.320Z</updated>
+    <updated>2016-11-26T07:37:48.822Z</updated>
     
     <content type="html"><![CDATA[<p>因为工作室要办宣讲会 打算用impress.js做几个ppt</p>
 <p>所以我就临时的学了一下 边做边学</p>
