@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-12-29T05:50:12.293Z</updated>
+  <updated>2016-12-30T06:39:47.020Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,15 +16,57 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>JavaScript‘s bitwise operators</title>
+    <link href="http://yoursite.com/2016/12/30/2016-12-30-JavaScript%E2%80%98s%20bitwise%20operators/"/>
+    <id>http://yoursite.com/2016/12/30/2016-12-30-JavaScript‘s bitwise operators/</id>
+    <published>2016-12-30T06:00:00.000Z</published>
+    <updated>2016-12-30T06:39:47.020Z</updated>
+    
+    <content type="html"><![CDATA[<p>在做codewars的Morse encoding 的题目的时候，发现js的位运算很奇怪_(:зゝ∠)…</p>
+<p>然后试了一下</p>
+<p><code>console.log((5).toString(2));</code></p>
+<p>结果是 <code>101</code></p>
+<p><code>console.log(~5)</code></p>
+<p>想象中应该是2 或者010</p>
+<p>然而结果是<code>-6</code>… </p>
+<p><strong>Reason：</strong></p>
+<p>The binary representation of numbers in JS is handled in the “Two’s Complement” system. which is just a fancy way of saying that for any given set of bits,the first bit represents the sign (0 for positive,1 for negative) of the number and the rest of the bits represent the “absolute value” of the number according to the follow simple formula:</p>
+<ul>
+<li>For positive numbers and 0 ,the value tells how “far” from 0 the number is… i.e. 10 in binary(2 in decimal) means “2 above 0” ,so for a 3-bit number in Two’s Complement ,the number 2(decimal) would be represented as “010”</li>
+<li>For negative numbers,how far above the smallest possible value that can be represented with the number of bits available ,e.g. with three bits ,the smallest possible number we can represent is -4 ,so “101”(binary) is like saying “01 more than -4” or -3.</li>
+</ul>
+<p>so in the example above ,when we “flipped” the bits of the number 5,there was the extra “sign bit” on the front that got flipped as well.. so what we thought was “101” was actually “0101” and when we flipped the bits ,we got “1010” i.e. “-6”</p>
+<p>即所有的按位操作符的操作数都会被转成补码（two’s complement）形式的有符号32位整数。</p>
+<p>所以要考虑在进行位运算的时候一定要考虑符号位..</p>
+<p><code>&lt;&lt;</code> 有符号左移</p>
+<p><code>&gt;&gt;</code> 有符号右移</p>
+<p><code>&lt;&lt;&lt;</code> 无符号左移</p>
+<p><code>&gt;&gt;&gt;</code>无符号右移</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在做codewars的Morse encoding 的题目的时候，发现js的位运算很奇怪_(:зゝ∠)…&lt;/p&gt;
+&lt;p&gt;然后试了一下&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;console.log((5).toString(2));&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;结果是 &lt;code&gt;101
+    
+    </summary>
+    
+    
+      <category term="JavaScript" scheme="http://yoursite.com/tags/JavaScript/"/>
+    
+  </entry>
+  
+  <entry>
     <title>CodeWars - 3kyu - Morse Encoding</title>
     <link href="http://yoursite.com/2016/12/29/2016-12-29-Codewars-3kyu-MorseEncoding/"/>
     <id>http://yoursite.com/2016/12/29/2016-12-29-Codewars-3kyu-MorseEncoding/</id>
     <published>2016-12-29T02:26:49.000Z</published>
-    <updated>2016-12-29T05:50:12.293Z</updated>
+    <updated>2016-12-30T03:49:29.461Z</updated>
     
-    <content type="html"><![CDATA[<p>题目见link</p>
-<p><a href="https://www.codewars.com/kata/morse-encoding/train/javascript" target="_blank" rel="external">https://www.codewars.com/kata/morse-encoding/train/javascript</a></p>
-<p>这个题目就是写两个方法</p>
+    <content type="html"><![CDATA[<p><a href="https://www.codewars.com/kata/morse-encoding/train/javascript" target="_blank" rel="external">题目</a></p>
+<p>这个题目的要求就是让我们写两个方法</p>
 <p>The first method <code>Morse.encode</code> will take a String representing the message and will return an array of <strong>signed 32-bit integers</strong> in <strong>big-endian order</strong> and in <strong>two’s complement format</strong>. </p>
 <p>The second method <code>Morse.decode</code> will take an array of numbers and return the String representation of the message. </p>
 <p>我的代码：</p>
@@ -42,8 +84,40 @@
     
     <summary type="html">
     
-      &lt;p&gt;题目见link&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://www.codewars.com/kata/morse-encoding/train/javascript&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://www.codewar
+      &lt;p&gt;&lt;a href=&quot;https://www.codewars.com/kata/morse-encoding/train/javascript&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;题目&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;这个题目的要求就是让我们写两个方法&lt;/p
+    
+    </summary>
+    
+    
+      <category term="JavaScript" scheme="http://yoursite.com/tags/JavaScript/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CodeWars - 4kyu - Strip Url Params</title>
+    <link href="http://yoursite.com/2016/12/23/2016-12-23-Codewars-4kyu-StripUrlParams/"/>
+    <id>http://yoursite.com/2016/12/23/2016-12-23-Codewars-4kyu-StripUrlParams/</id>
+    <published>2016-12-23T09:20:20.000Z</published>
+    <updated>2016-12-30T03:51:22.226Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="https://www.codewars.com/kata/strip-url-params/train/javascript" target="_blank" rel="external">题目</a></p>
+<h3 id="Description"><a href="#Description" class="headerlink" title="Description:"></a>Description:</h3><h5 id="Complete-the-method-so-that-it-does-the-following"><a href="#Complete-the-method-so-that-it-does-the-following" class="headerlink" title="Complete the method so that it does the following:"></a>Complete the method so that it does the following:</h5><ul>
+<li>Removes any duplicate query string parameters from the url</li>
+<li>Removes any query string parameters specified within the 2nd argument (optional array)</li>
+</ul>
+<h5 id="Examples"><a href="#Examples" class="headerlink" title="Examples:"></a>Examples:</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">stripUrlParams(<span class="string">'www.codewars.com?a=1&amp;b=2&amp;a=2'</span>) <span class="comment">// returns 'www.codewars.com?a=1&amp;b=2'</span></div><div class="line">stripUrlParams(<span class="string">'www.codewars.com?a=1&amp;b=2&amp;a=2'</span>, [<span class="string">'b'</span>]) <span class="comment">// returns 'www.codewars.com?a=1'</span></div><div class="line">stripUrlParams(<span class="string">'www.codewars.com'</span>, [<span class="string">'b'</span>]) <span class="comment">// returns 'www.codewars.com'</span></div></pre></td></tr></table></figure>
+<p>I coded 10+ lines but the best practices of all solutions is 2 lines… sad ….</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//my solution</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">stripUrlParams</span>(<span class="params">url, paramsToStrip</span>)</span>&#123;</div><div class="line">	<span class="keyword">let</span> params = url.substring(url.indexOf(<span class="string">"?"</span>)+<span class="number">1</span>)</div><div class="line">	<span class="keyword">let</span> k = []</div><div class="line">	<span class="keyword">let</span> j = params.split(<span class="string">"&amp;"</span>).filter(<span class="function">(<span class="params">v,i</span>)=&gt;</span>&#123;</div><div class="line">		<span class="keyword">let</span> tem = v.split(<span class="string">"="</span>)[<span class="number">0</span>]</div><div class="line">		<span class="keyword">if</span> (k.indexOf(tem)==<span class="number">-1</span> &amp;&amp; test(paramsToStrip,tem))&#123;</div><div class="line">			k.push(tem)</div><div class="line">			<span class="keyword">return</span> v</div><div class="line">		&#125;</div><div class="line">	&#125;)</div><div class="line">	<span class="keyword">return</span> url.substring(<span class="number">0</span>,url.indexOf(<span class="string">"?"</span>)+<span class="number">1</span>)+j.join(<span class="string">"&amp;"</span>)</div><div class="line">&#125;</div><div class="line"><span class="keyword">const</span> test = <span class="function">(<span class="params">arr,p</span>)=&gt;</span>&#123;</div><div class="line">	<span class="keyword">if</span>(arr==<span class="literal">undefined</span> || arr.length==<span class="number">0</span>)</div><div class="line">		<span class="keyword">return</span> <span class="literal">true</span></div><div class="line">	<span class="keyword">return</span> arr.indexOf(p)==<span class="number">-1</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//best practices </span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">stripUrlParams</span>(<span class="params">url, paramsToStrip</span>)</span>&#123;</div><div class="line">  <span class="keyword">return</span> url.replace(<span class="regexp">/&amp;?([^?=]+)=.+?/g</span>, <span class="function"><span class="keyword">function</span>(<span class="params">m, p1, qPos</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> url.indexOf(p1 + <span class="string">'='</span>) &lt; qPos || (paramsToStrip||[]).indexOf(p1) &gt; <span class="number">-1</span> ? <span class="string">""</span>: m;</div><div class="line">   &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>get了一下replace的小trick..</p>
+<p>该好好学学正则了<em>(:зゝ∠)</em>…</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;a href=&quot;https://www.codewars.com/kata/strip-url-params/train/javascript&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;题目&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;Description&quot;&gt;
     
     </summary>
     
@@ -54,8 +128,8 @@
   
   <entry>
     <title>Hexo＋GitHub pages＋多说搭建博客</title>
-    <link href="http://yoursite.com/2016/11/26/hexo+GitHub%20pages+%E5%A4%9A%E8%AF%B4%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/"/>
-    <id>http://yoursite.com/2016/11/26/hexo+GitHub pages+多说搭建博客/</id>
+    <link href="http://yoursite.com/2016/11/26/2016-11-26-hexo+GitHub%20pages+%E5%A4%9A%E8%AF%B4%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/"/>
+    <id>http://yoursite.com/2016/11/26/2016-11-26-hexo+GitHub pages+多说搭建博客/</id>
     <published>2016-11-26T04:46:25.000Z</published>
     <updated>2016-11-26T07:56:33.434Z</updated>
     
@@ -102,7 +176,7 @@
 <p>部署完成之后访问你的如 <code>lizimeowww.github.io</code> 的网址,即可看到和本地一样的效果。</p>
 <h2 id="Step-6-删写博客"><a href="#Step-6-删写博客" class="headerlink" title="Step 6 删写博客"></a>Step 6 删写博客</h2><ul>
 <li><p><strong>新建博客</strong><br><code>hexo new &quot;文章名&quot;</code><br>或者直接写一个.md文件丢进<code>source/_post</code>这个目录下就可以<br>记得要加上Front-matter </p>
-<img src="/2016/11/26/hexo+GitHub%20pages+多说搭建博客/1.png" alt="image" title="image">
+<img src="/2016/11/26/2016-11-26-hexo+GitHub%20pages+多说搭建博客/1.png" alt="image" title="image">
 </li>
 <li><p><strong>删除文章</strong><br>直接删掉 source/_post 下对应文章的文件，然后重新生成+部署即可。有时可能要多刷新几次才能看到效果。</p>
 </li>
