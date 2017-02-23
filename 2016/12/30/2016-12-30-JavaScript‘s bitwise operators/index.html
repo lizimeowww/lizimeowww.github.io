@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> JavaScript‘s bitwise operators · lizimeow's blog</title><meta name="description" content="JavaScript‘s bitwise operators - lizimeow"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="short icon" href="/favicon.png"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="http://yoursite.com/atom.xml" title="lizimeow's blog"></head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.png"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="http://weibo.com/lizimeow" target="_blank" class="nav-list-link">WEIBO</a></li><li class="nav-list-item"><a href="https://github.com/lizimeow" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="/about/" target="_self" class="nav-list-link">ABOUT</a></li></ul></header><section class="container"><div class="post"><article class="post-block"><h1 class="post-title">JavaScript‘s bitwise operators</h1><div class="post-info">2016年12月30日</div><div class="post-content"><p>在做codewars的Morse encoding 的题目的时候，发现js的位运算很奇怪_(:зゝ∠)…</p>
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> JavaScript's bitwise operators · lizimeow's blog</title><meta name="description" content="JavaScript's bitwise operators - lizimeow"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="short icon" href="/favicon.png"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="http://yoursite.com/atom.xml" title="lizimeow's blog"></head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.png"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="http://weibo.com/lizimeow" target="_blank" class="nav-list-link">WEIBO</a></li><li class="nav-list-item"><a href="https://github.com/lizimeow" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="/about/" target="_self" class="nav-list-link">ABOUT</a></li></ul></header><section class="container"><div class="post"><article class="post-block"><h1 class="post-title">JavaScript's bitwise operators</h1><div class="post-info">2016年12月30日</div><div class="post-content"><p>在做codewars的Morse encoding 的题目的时候，发现js的位运算很奇怪_(:зゝ∠)…</p>
 <p>然后试了一下</p>
 <p><code>console.log((5).toString(2));</code></p>
 <p>结果是 <code>101</code></p>
@@ -18,12 +18,33 @@
 <p><code>&gt;&gt;</code> 有符号右移</p>
 <p><code>&lt;&lt;&lt;</code> 无符号左移</p>
 <p><code>&gt;&gt;&gt;</code>无符号右移</p>
-</div></article></div></section><footer><div class="paginator"><a href="/2016/12/29/2016-12-29-Codewars-3kyu-MorseEncoding/" class="next">NEXT</a></div><div id="disqus_thread"></div><script>var disqus_shortname = 'lizimeow';
+<h4 id="巧用"><a href="#巧用" class="headerlink" title="巧用"></a>巧用</h4><ul>
+<li><p>判断奇偶性</p>
+<p><code>n &amp; 1 === 0 //true 为 奇数</code></p>
+</li>
+<li><p>向下取整</p>
+<p><code>(3.14 | 0) === 3 //true</code></p>
+<p><code>~~3.14 //3</code></p>
+</li>
+<li><p>向上取整</p>
+<p><code>-~3.14 //4</code></p>
+</li>
+<li><p>交替变量</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var a = 1, b = 2;</div><div class="line">a ^= b; // a = a ^ b = 1 ^ 2 = 3</div><div class="line">b ^= a; // b = b ^ (a ^ b) = 2 ^ (1 ^ 2) = 1</div><div class="line">a ^= b; // a = a ^ b = 3 ^ 1 = 2</div></pre></td></tr></table></figure>
+</li>
+<li><p>求 2 的 N 次方</p>
+<p><code>1 &lt;&lt; n</code></p>
+</li>
+<li><p>判断数字正负</p>
+<p><code>(n === (n &gt;&gt;&gt; 0)) ? true : false; //负数返回false</code></p>
+</li>
+</ul>
+</div></article></div></section><footer><div class="paginator"><a href="/2017/02/20/2017-02-20-【翻译】优化Web里的GIF/" class="prev">上一篇</a><a href="/2016/12/29/2016-12-29-Codewars-3kyu-MorseEncoding/" class="next">下一篇</a></div><div id="disqus_thread"></div><script>var disqus_shortname = 'lizimeow';
 var disqus_identifier = '2016/12/30/2016-12-30-JavaScript‘s bitwise operators/';
-var disqus_title = 'JavaScript‘s bitwise operators';
+var disqus_title = 'JavaScript's bitwise operators';
 var disqus_url = 'http://yoursite.com/2016/12/30/2016-12-30-JavaScript‘s bitwise operators/';
 (function() {
     var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
     dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-})();</script><script id="dsq-count-scr" src="//lizimeow.disqus.com/count.js" async></script><div class="copyright"><p>© 2015 - 2016 <a href="http://yoursite.com">lizimeow</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create',"UA-65933410-1",'auto');ga('send','pageview');</script></body></html>
+})();</script><script id="dsq-count-scr" src="//lizimeow.disqus.com/count.js" async></script><div class="copyright"><p>© 2015 - 2017 <a href="http://yoursite.com">lizimeow</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create',"UA-65933410-1",'auto');ga('send','pageview');</script></body></html>
