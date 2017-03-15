@@ -4,15 +4,28 @@
 
     
   <url>
+    <loc>http://yoursite.com/2017/03/15/2017-03-15-%20Canvas%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
+    <lastmod>2017-03-15T13:27:27.185Z</lastmod>
+    <data>
+        <display>
+        <title>Canvas 学习笔记</title>
+        <pubTime>2017-03-15T13:04:13.000Z</pubTime>
+        
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://yoursite.com/2017/03/14/2017-03-14-%20%E8%A7%A3%E5%86%B3Canvas%E5%9B%BE%E7%89%87%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98/</loc>
-    <lastmod>2017-03-15T10:31:22.469Z</lastmod>
+    <lastmod>2017-03-15T13:27:22.062Z</lastmod>
     <data>
         <display>
         <title>解决Canvas图片跨域问题</title>
         <pubTime>2017-03-14T12:00:00.000Z</pubTime>
         
-        <tag>Web</tag>
-         
          
            
         </display>
