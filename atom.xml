@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-03-15T13:27:27.185Z</updated>
+  <updated>2017-03-15T13:27:22.062Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,11 +16,50 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>解决Canvas图片跨域问题</title>
+    <link href="http://yoursite.com/2017/03/14/2017-03-14-%20%E8%A7%A3%E5%86%B3Canvas%E5%9B%BE%E7%89%87%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98/"/>
+    <id>http://yoursite.com/2017/03/14/2017-03-14- 解决Canvas图片跨域问题/</id>
+    <published>2017-03-14T12:00:00.000Z</published>
+    <updated>2017-03-15T13:27:22.062Z</updated>
+    
+    <content type="html"><![CDATA[<p>Uncaught DOMException: Failed to execute ‘getImageData’ on ‘CanvasRenderingContext2D’: The canvas has been tainted by cross-origin data.`</p>
+<p>在写canvas的时候要获取图像数据，遇到了上面这个错误。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> img = <span class="keyword">new</span> Image()</div><div class="line"><span class="keyword">var</span> canvas = <span class="built_in">document</span>.getElementById(<span class="string">'canvas'</span>)</div><div class="line"><span class="keyword">var</span> ctx = canvas.getContext(<span class="string">'2d'</span>)</div><div class="line">img.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  ctx.drawImage(img, <span class="number">0</span>, <span class="number">0</span>)</div><div class="line">  img.style.display = <span class="string">'none'</span></div><div class="line">&#125;;</div><div class="line">img.src = <span class="string">'1.png'</span></div><div class="line"><span class="comment">//....省略不重要的代码</span></div><div class="line"><span class="keyword">var</span> pix = ctx.getImageData(x, y, <span class="number">1</span>, <span class="number">1</span>)<span class="comment">//错误的地方</span></div></pre></td></tr></table></figure>
+<h3 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h3><p>一般情况下，我们可以不通过CORS就在画布中使用跨域图片，用<code>new Image()</code>加载，然后将这个图片画在canvas上。但是这么做会污染画布，也就是让canvas变成了脏状态，一旦画布被污染，我们就不能读取其数据。譬如toDataUrl、getImageData()等。</p>
+<p>​    为了解决这个问题，image新增了一个属性crossOrigin，使得img也走类似XHR的跨域权限机制。设置了crossOrigin的img，即便是跨域图片被画在canvas上，也不会使canvas变为脏状态。</p>
+<h3 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h3><ul>
+<li><p>给image设置crossOrigin属性   <code>img.crossOrigin=&quot;anonymous&quot;</code></p>
+<p>提供资源的服务器也得支持跨域请求  header要设置<code>Access-Control-Allow-Origin:*</code></p>
+<p>crossOrigin属性一定要在src之前设置</p>
+</li>
+<li><p>如果在本地运行报错，可能是因为使用了<code>file://</code></p>
+<p>也就是说这个页面需要运行在服务器上，所以我们可以运行一个localhost </p>
+<p>Set up localhost的几个方法..</p>
+<ul>
+<li>丢在 WampServer 里</li>
+<li><code>python -m http.server 8080</code>  （Python3）</li>
+</ul>
+<p>​</p>
+</li>
+</ul>
+<p>stackoverfow 的相关提问 <a href="http://stackoverflow.com/questions/9972049/cross-origin-data-in-html5-canvas" target="_blank" rel="external">canvas CORS</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Uncaught DOMException: Failed to execute ‘getImageData’ on ‘CanvasRenderingContext2D’: The canvas has been tainted by cross-origin data.`
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
     <title>Canvas 学习笔记</title>
-    <link href="http://yoursite.com/2017/03/15/2017-03-15-%20Canvas%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    <id>http://yoursite.com/2017/03/15/2017-03-15- Canvas学习笔记/</id>
-    <published>2017-03-15T13:04:13.000Z</published>
-    <updated>2017-03-15T13:27:27.185Z</updated>
+    <link href="http://yoursite.com/2017/03/02/2017-02-30-%20Canvas%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    <id>http://yoursite.com/2017/03/02/2017-02-30- Canvas学习笔记/</id>
+    <published>2017-03-02T13:04:13.000Z</published>
+    <updated>2017-03-15T13:30:57.286Z</updated>
     
     <content type="html"><![CDATA[<h2 id="虚线"><a href="#虚线" class="headerlink" title="虚线"></a>虚线</h2><p>使用<code>setLineDash</code>和<code>lineDashOffset</code>属性来设置虚线样式</p>
 <ul>
@@ -90,45 +129,6 @@
     
       &lt;h2 id=&quot;虚线&quot;&gt;&lt;a href=&quot;#虚线&quot; class=&quot;headerlink&quot; title=&quot;虚线&quot;&gt;&lt;/a&gt;虚线&lt;/h2&gt;&lt;p&gt;使用&lt;code&gt;setLineDash&lt;/code&gt;和&lt;code&gt;lineDashOffset&lt;/code&gt;属性来设置虚线样式&lt;/p&gt;
 &lt;u
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>解决Canvas图片跨域问题</title>
-    <link href="http://yoursite.com/2017/03/14/2017-03-14-%20%E8%A7%A3%E5%86%B3Canvas%E5%9B%BE%E7%89%87%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98/"/>
-    <id>http://yoursite.com/2017/03/14/2017-03-14- 解决Canvas图片跨域问题/</id>
-    <published>2017-03-14T12:00:00.000Z</published>
-    <updated>2017-03-15T13:27:22.062Z</updated>
-    
-    <content type="html"><![CDATA[<p>Uncaught DOMException: Failed to execute ‘getImageData’ on ‘CanvasRenderingContext2D’: The canvas has been tainted by cross-origin data.`</p>
-<p>在写canvas的时候要获取图像数据，遇到了上面这个错误。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> img = <span class="keyword">new</span> Image()</div><div class="line"><span class="keyword">var</span> canvas = <span class="built_in">document</span>.getElementById(<span class="string">'canvas'</span>)</div><div class="line"><span class="keyword">var</span> ctx = canvas.getContext(<span class="string">'2d'</span>)</div><div class="line">img.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  ctx.drawImage(img, <span class="number">0</span>, <span class="number">0</span>)</div><div class="line">  img.style.display = <span class="string">'none'</span></div><div class="line">&#125;;</div><div class="line">img.src = <span class="string">'1.png'</span></div><div class="line"><span class="comment">//....省略不重要的代码</span></div><div class="line"><span class="keyword">var</span> pix = ctx.getImageData(x, y, <span class="number">1</span>, <span class="number">1</span>)<span class="comment">//错误的地方</span></div></pre></td></tr></table></figure>
-<h3 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h3><p>一般情况下，我们可以不通过CORS就在画布中使用跨域图片，用<code>new Image()</code>加载，然后将这个图片画在canvas上。但是这么做会污染画布，也就是让canvas变成了脏状态，一旦画布被污染，我们就不能读取其数据。譬如toDataUrl、getImageData()等。</p>
-<p>​    为了解决这个问题，image新增了一个属性crossOrigin，使得img也走类似XHR的跨域权限机制。设置了crossOrigin的img，即便是跨域图片被画在canvas上，也不会使canvas变为脏状态。</p>
-<h3 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h3><ul>
-<li><p>给image设置crossOrigin属性   <code>img.crossOrigin=&quot;anonymous&quot;</code></p>
-<p>提供资源的服务器也得支持跨域请求  header要设置<code>Access-Control-Allow-Origin:*</code></p>
-<p>crossOrigin属性一定要在src之前设置</p>
-</li>
-<li><p>如果在本地运行报错，可能是因为使用了<code>file://</code></p>
-<p>也就是说这个页面需要运行在服务器上，所以我们可以运行一个localhost </p>
-<p>Set up localhost的几个方法..</p>
-<ul>
-<li>丢在 WampServer 里</li>
-<li><code>python -m http.server 8080</code>  （Python3）</li>
-</ul>
-<p>​</p>
-</li>
-</ul>
-<p>stackoverfow 的相关提问 <a href="http://stackoverflow.com/questions/9972049/cross-origin-data-in-html5-canvas" target="_blank" rel="external">canvas CORS</a></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Uncaught DOMException: Failed to execute ‘getImageData’ on ‘CanvasRenderingContext2D’: The canvas has been tainted by cross-origin data.`
     
     </summary>
     
