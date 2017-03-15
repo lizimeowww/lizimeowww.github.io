@@ -1,0 +1,30 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> 解决Canvas图片跨域问题 · lizimeow's blog</title><meta name="description" content="解决Canvas图片跨域问题 - lizimeow"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="short icon" href="/favicon.png"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="http://yoursite.com/atom.xml" title="lizimeow's blog"></head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.png"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="http://weibo.com/lizimeow" target="_blank" class="nav-list-link">WEIBO</a></li><li class="nav-list-item"><a href="https://github.com/lizimeow" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="/about/" target="_self" class="nav-list-link">ABOUT</a></li></ul></header><section class="container"><div class="post"><article class="post-block"><h1 class="post-title">解决Canvas图片跨域问题</h1><div class="post-info">2017年3月14日</div><div class="post-content"><p>Uncaught DOMException: Failed to execute ‘getImageData’ on ‘CanvasRenderingContext2D’: The canvas has been tainted by cross-origin data.`</p>
+<p>在写canvas的时候要获取图像数据，遇到了上面这个错误。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> img = <span class="keyword">new</span> Image()</div><div class="line"><span class="keyword">var</span> canvas = <span class="built_in">document</span>.getElementById(<span class="string">'canvas'</span>)</div><div class="line"><span class="keyword">var</span> ctx = canvas.getContext(<span class="string">'2d'</span>)</div><div class="line">img.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  ctx.drawImage(img, <span class="number">0</span>, <span class="number">0</span>)</div><div class="line">  img.style.display = <span class="string">'none'</span></div><div class="line">&#125;;</div><div class="line">img.src = <span class="string">'1.png'</span></div><div class="line"><span class="comment">//....省略不重要的代码</span></div><div class="line"><span class="keyword">var</span> pix = ctx.getImageData(x, y, <span class="number">1</span>, <span class="number">1</span>)<span class="comment">//错误的地方</span></div></pre></td></tr></table></figure>
+<h3 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h3><p>一般情况下，我们可以不通过CORS就在画布中使用跨域图片，用<code>new Image()</code>加载，然后将这个图片画在canvas上。但是这么做会污染画布，也就是让canvas变成了脏状态，一旦画布被污染，我们就不能读取其数据。譬如toDataUrl、getImageData()等。</p>
+<p>​    为了解决这个问题，image新增了一个属性crossOrigin，使得img也走类似XHR的跨域权限机制。设置了crossOrigin的img，即便是跨域图片被画在canvas上，也不会使canvas变为脏状态。</p>
+<h3 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h3><ul>
+<li><p>给image设置crossOrigin属性   <code>img.crossOrigin=&quot;anonymous&quot;</code></p>
+<p>提供资源的服务器也得支持跨域请求  header要设置<code>Access-Control-Allow-Origin:*</code></p>
+<p>crossOrigin属性一定要在src之前设置</p>
+</li>
+<li><p>如果在本地运行报错，可能是因为使用了<code>file://</code></p>
+<p>也就是说这个页面需要运行在服务器上，所以我们可以运行一个localhost </p>
+<p>Set up localhost的几个方法..</p>
+<ul>
+<li>丢在 WampServer 里</li>
+<li><code>python -m http.server 8080</code>  （Python3）</li>
+</ul>
+<p>​</p>
+</li>
+</ul>
+<p>stackoverfow 的相关提问 <a href="http://stackoverflow.com/questions/9972049/cross-origin-data-in-html5-canvas" target="_blank" rel="external">canvas CORS</a></p>
+</div></article></div></section><footer><div class="paginator"><a href="/2017/02/20/2017-02-20-【翻译】优化Web里的GIF/" class="next">下一篇</a></div><div id="disqus_thread"></div><script>var disqus_shortname = 'lizimeow';
+var disqus_identifier = '2017/03/14/2017-03-14- 解决Canvas图片跨域问题/';
+var disqus_title = '解决Canvas图片跨域问题';
+var disqus_url = 'http://yoursite.com/2017/03/14/2017-03-14- 解决Canvas图片跨域问题/';
+(function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();</script><script id="dsq-count-scr" src="//lizimeow.disqus.com/count.js" async></script><div class="copyright"><p>© 2015 - 2017 <a href="http://yoursite.com">lizimeow</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create',"UA-65933410-1",'auto');ga('send','pageview');</script></body></html>
