@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-04-02T03:12:15.318Z</updated>
+  <updated>2017-04-02T03:14:29.892Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,14 +20,14 @@
     <link href="http://yoursite.com/2017/04/01/2017-04-01-%20%E5%89%8D%E7%AB%AF%E6%A8%A1%E5%9D%97%E5%8C%96/"/>
     <id>http://yoursite.com/2017/04/01/2017-04-01- 前端模块化/</id>
     <published>2017-04-01T12:00:00.000Z</published>
-    <updated>2017-04-02T03:12:15.318Z</updated>
+    <updated>2017-04-02T03:14:29.892Z</updated>
     
     <content type="html"><![CDATA[<p>为了更好的管理网页的业务逻辑，产生了模块化编程的理念。</p>
 <p>常用的 JavaScript 的模块化规范有 CommonJS 、 AMD 、CMD</p>
 <h3 id="CommonJS-规范"><a href="#CommonJS-规范" class="headerlink" title="CommonJS 规范"></a>CommonJS 规范</h3><blockquote>
 <p>服务器端模块的规范</p>
 </blockquote>
-<p>CommonJS定义的模块分为:{模块引用(require)} {模块定义(exports)} {模块标识(module)}</p>
+<p>CommonJS定义的模块分为:<code>模块引用(require)</code>  <code>模块定义(exports)</code>  <code>模块标识(module)</code> </p>
 <p>require()用来引入外部模块，该方法读取一个文件并执行，最后返回文件内部的 exports 对象；exports对象用于导出当前模块的方法或变量，唯一的导出口；一个单独的文件就是一个模块，module对象就代表模块本身。</p>
 <p>CommonJS 规范加载模块是同步的，只有加载完成，才能执行后面的操作。这种写法适合服务端，因为在服务器读取模块都是在本地磁盘，加载速度很快。但是如果在客户端，加载模块的时候有可能出现“假死”状况。</p>
 <h3 id="AMD-规范"><a href="#AMD-规范" class="headerlink" title="AMD 规范"></a>AMD 规范</h3><blockquote>
@@ -81,11 +81,14 @@
     <link href="http://yoursite.com/2017/03/23/2017-03-23-%20%E5%89%8D%E7%AB%AF%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86%E4%B9%8BFlux%E3%80%81Redux%E3%80%81Vuex/"/>
     <id>http://yoursite.com/2017/03/23/2017-03-23- 前端状态管理之Flux、Redux、Vuex/</id>
     <published>2017-03-23T03:00:00.000Z</published>
-    <updated>2017-03-23T06:44:55.303Z</updated>
+    <updated>2017-04-08T12:27:53.683Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>Flux是一种前端状态管理架构思想。基于 Flux 的设计思想，出现了一批前端状态管理框架。比较主流的就是 Vuex 和 Redux 了。</p>
 </blockquote>
+<p>两篇特别好的文章</p>
+<p><a href="https://zhuanlan.zhihu.com/p/25800767" target="_blank" rel="external">浅谈前端状态管理（上）</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/25908872" target="_blank" rel="external">浅谈前端状态管理（下）</a></p>
 <h3 id="Flux"><a href="#Flux" class="headerlink" title="Flux"></a>Flux</h3><p> Flux 的思维方式是单向的，将修改数据层的 controller 代码收归一处，统一管理，组件需要修改数据层的话需要去触发特定的预先定义好的 dispatcher，然后 dispatcher 将 action 应用到 model 上，实现数据层的修改。然后数据层的修改会应用到视图上，形成一个单向的数据流。</p>
 <p><img src="1.jpg" alt=""></p>
 <p>Flux 的核心是 <strong>Dispatcher</strong>，通过 Dispatcher，用户可以注册需要相应的 action 类型，对不同的 action 注册对应的回调，以及触发 action 并传递 payload data。</p>
@@ -110,7 +113,8 @@
       &lt;blockquote&gt;
 &lt;p&gt;Flux是一种前端状态管理架构思想。基于 Flux 的设计思想，出现了一批前端状态管理框架。比较主流的就是 Vuex 和 Redux 了。&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h3 id=&quot;Flux&quot;&gt;&lt;a href=&quot;#Flux&quot; class=
+&lt;p&gt;两篇特别好的文章&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://
     
     </summary>
     
