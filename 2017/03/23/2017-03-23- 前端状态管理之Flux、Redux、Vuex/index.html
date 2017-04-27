@@ -21,7 +21,7 @@
 <p>​     和 Redux 中使用不可变数据来表示 state 不同，Vuex 中没有 reducer 来生成全新的 state 来替换旧的 state，Vuex 中的 state 是<strong>可以被修改的</strong>。即，以 <code>mutations</code> 变化函数取代 <code>Reducer</code>，无需 switch ，只需在对应的 mutation 函数里改变 state 值即可。一个 mutation 是由一个 type 和与其对应的 handler 构成的，type 是一个字符串类型用以作为 key 去识别具体的某个 mutation，handler 则是对 state 实际进行变更的函数。</p>
 <p>​    这么做的原因和 Vue 的运行机制有关系，Vue 基于 ES5 中的 <code>getter/setter</code> 来实现视图和数据的双向绑定，因此 Vuex 中 state 的变更可以通过 setter 通知到视图中对应的指令来实现视图更新。</p>
 <p>​    在 Vuex 中可以记录每次 state 改变的具体内容，state 的变更可被记录与追踪。Vuex 中的 action 也是 store 的组成部分，它可以被看成是连接视图与 state 的桥梁，它会被视图调用，并由它来调用 mutation handler，向 mutation 传入 payload。</p>
-</div></article></div></section><footer><div class="paginator"><a href="/2017/04/01/2017-04-01- 前端模块化/" class="prev">PREV</a><a href="/2017/03/14/2017-03-14- 解决Canvas图片跨域问题/" class="next">NEXT</a></div><div id="disqus_thread"></div><script>var disqus_shortname = 'lizimeow';
+</div></article></div></section><footer><div class="paginator"><a href="/2017/03/29/2017-04-02- Python笔记/" class="prev">PREV</a><a href="/2017/03/14/2017-03-14- 解决Canvas图片跨域问题/" class="next">NEXT</a></div><div id="disqus_thread"></div><script>var disqus_shortname = 'lizimeow';
 var disqus_identifier = '2017/03/23/2017-03-23- 前端状态管理之Flux、Redux、Vuex/';
 var disqus_title = '前端状态管理之Flux、Redux、Vuex';
 var disqus_url = 'http://yoursite.com/2017/03/23/2017-03-23- 前端状态管理之Flux、Redux、Vuex/';
