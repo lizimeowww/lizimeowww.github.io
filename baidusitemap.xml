@@ -4,6 +4,23 @@
 
     
   <url>
+    <loc>http://yoursite.com/2017/04/01/2017-04-01-%20%E5%89%8D%E7%AB%AF%E6%A8%A1%E5%9D%97%E5%8C%96/</loc>
+    <lastmod>2017-05-14T05:37:54.423Z</lastmod>
+    <data>
+        <display>
+        <title>前端模块化</title>
+        <pubTime>2017-04-01T12:00:00.000Z</pubTime>
+        
+        <tag>Web</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://yoursite.com/2017/03/29/2017-04-02-%20Python%E7%AC%94%E8%AE%B0/</loc>
     <lastmod>2017-04-27T14:05:26.533Z</lastmod>
     <data>
@@ -26,23 +43,6 @@
         <title>前端状态管理之Flux、Redux、Vuex</title>
         <pubTime>2017-03-23T03:00:00.000Z</pubTime>
         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yoursite.com/2017/04/01/2017-04-01-%20%E5%89%8D%E7%AB%AF%E6%A8%A1%E5%9D%97%E5%8C%96/</loc>
-    <lastmod>2017-04-02T03:14:29.892Z</lastmod>
-    <data>
-        <display>
-        <title>前端模块化</title>
-        <pubTime>2017-04-01T12:00:00.000Z</pubTime>
-        
-        <tag>Web</tag>
-         
          
            
         </display>
