@@ -5,12 +5,47 @@
 <p>客户端查询更新的格式是：<code>If-None-Match:&quot;5d8c72a5edda8d6a:3239&quot;</code>,若Etag没变，则返回304</p>
 <h3 id="Expires"><a href="#Expires" class="headerlink" title="Expires"></a>Expires</h3><p>Expires：过期时间。需和<code>Last-Modified</code>结合使用，用于控制请求文件的有效时间。格式：<code>Expires:Thu, 02 Apr 2017 05:14:08 GMT</code> 。过了这个时间，缓存器就会向源服务器发送请求，检查文档是否被修改。</p>
 <h3 id="Cache-Control"><a href="#Cache-Control" class="headerlink" title="Cache-Control"></a>Cache-Control</h3><p><strong>General Header</strong></p>
-<p>常见的值有有<code>private</code>、<code>public</code>、<code>no-store</code>、<code>no-cache</code>、<code>must-revalidate</code>、<code>max-age</code>等。</p>
-<p><code>Cache-Control: no-cache Cache-Control: max-age=60, must-revalidate</code></p>
+<p><strong>可缓存性</strong></p>
+<ul>
+<li><p><code>public</code></p>
+<p>表明响应可以被任何对象（包括：发送请求的客户端，代理服务器，等等）缓存。</p>
+</li>
+<li><p><code>private</code></p>
+<p>表明响应只能被单个用户缓存，不能作为共享缓存（即代理服务器不能缓存它）。</p>
+</li>
+<li><p><code>no-cache</code></p>
+<p> 强制所有缓存了该响应的缓存用户，在使用已存储的缓存数据前，发送带验证器的请求到原始服务器</p>
+</li>
+<li><p><code>only-if-cached</code></p>
+<p>表明如果缓存存在，只使用缓存，无论原始服务器数据是否有更新。</p>
+</li>
+</ul>
+<p><strong>到期</strong></p>
+<ul>
+<li><p><code>max-age=&lt;seconds&gt;</code></p>
+<p>设置缓存存储的最大周期，超过这个时间缓存被认为过期(单位秒)。与Expires相反，时间是相对于请求的时间。</p>
+</li>
+</ul>
+<p><strong>重新验证</strong></p>
+<ul>
+<li><p><code>must-revalidate</code></p>
+<p>缓存必须在使用之前验证旧资源的状态，并且不可使用过期资源</p>
+</li>
+</ul>
+<p><strong>其他</strong></p>
+<ul>
+<li><p><code>no-cache</code></p>
+<p>不管是请求还是响应，缓存都不应存储任何内容</p>
+</li>
+</ul>
+<p><u>禁止缓存 : </u></p>
+<p><code>Cache-Control: no-cache, no-store, must-revalidate</code></p>
+<p><u>缓存静态资源 : </u></p>
+<p><code>Cache-Control:public, max-age=31536000</code></p>
 <h3 id="Expires-和-Cache-Control比较"><a href="#Expires-和-Cache-Control比较" class="headerlink" title="Expires 和 Cache-Control比较"></a>Expires 和 Cache-Control比较</h3><p><code>Expires = 格林威治时间</code>，HTTP 1.0 版本，缓存的过期时间，允许客户端在这个时间之前不去检查（发请求）</p>
 <p><code>max-age = 秒</code>，HTTP 1.1版本，指资源在本地缓存多少秒</p>
 <p>如果<code>max-age</code>和<code>Expires</code>同时存在，则被<code>Cache-Control</code>的<code>max-age</code>覆盖</p>
-</div></article></div></section><footer><div class="paginator"><a href="/2017/05/17/2017-05-17- RxJS 从入门到入门/" class="prev">PREV</a><a href="/2017/04/01/2017-04-01- 前端模块化/" class="next">NEXT</a></div><div id="disqus_thread"></div><script>var disqus_shortname = 'lizimeow';
+</div></article></div></section><footer><div class="paginator"><a href="/2017/05/17/2017-05-17- RxJS 从入门到入门/" class="prev">上一篇</a><a href="/2017/04/01/2017-04-01- 前端模块化/" class="next">下一篇</a></div><div id="disqus_thread"></div><script>var disqus_shortname = 'lizimeow';
 var disqus_identifier = '2017/04/10/2017-04-10- 浏览器缓存/';
 var disqus_title = '浏览器缓存';
 var disqus_url = 'http://yoursite.com/2017/04/10/2017-04-10- 浏览器缓存/';
