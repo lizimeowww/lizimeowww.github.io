@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/about/index.html</loc>
+    
+    <lastmod>2017-10-24T15:49:00.421Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2017/10/01/2017-10-01-%20RxJS%E5%AD%A6%E4%B9%A0-(2)-%E5%9F%BA%E6%9C%AC%E7%9A%84%20operators%20(%E4%BA%8C)/</loc>
     
     <lastmod>2017-10-24T15:33:19.099Z</lastmod>
@@ -33,13 +40,6 @@
     <loc>http://yoursite.com/2017/04/10/2017-04-10-%20%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98/</loc>
     
     <lastmod>2017-05-30T14:30:57.919Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/about/index.html</loc>
-    
-    <lastmod>2017-05-25T12:08:22.502Z</lastmod>
     
   </url>
   
